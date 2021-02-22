@@ -140,7 +140,7 @@ class vector{
 //enum {__MAX_BYTES = 128};   //分配chunk的上限
 //enum {__NFREELISTS = __MAX_BYTES / __ALLGN};  //链表的条数
 static const int __ALLGN = 8;
-static const int __MAX_BYTES = 8;
+static const int __MAX_BYTES = 128;
 static const int __NFREELISTS = __MAX_BYTES / __ALLGN;
 
 template<bool threads, int inst>
@@ -283,7 +283,7 @@ char* __default_alloc_template<threads, inst>::chunk_alloc(size_t size, int& nob
         //打算从system free-store上去这么多来充值
         size_t bytes_to_get = 2 * total_bytes + ROUND_UP(heap_size >> 4);
         //处理碎片(将其挂到相应的chunk指针端口)
-        if(bytes_to_get > 0) {
+        if(bytees_left > 0) {
             obj* volatile *my_free_list =   //重新定位碎片的指针
                free_list + FREELIST_INDEX(bytees_left); 
             ((obj*)start_free)->free_list_link = *my_free_list;

@@ -99,7 +99,7 @@ class vector{
 > * 如果`malloc`系统内存分配失败，则需要在最接近`size`的已分配好的空闲`chunk`中回填`pool`，完成分配。如果向上走也无法分配成功，那系统分配才算完全失败。
 > * 由于一次性分配20个`chunk`，而每一次分配必须按照其`size`来选择链表头结点，所以有很大概率某些指针上的空闲`chunk`就会比较多。而`std::alloc`对`chunk`的选择一定是大于等于`size`的。从技术的角度，将这些空闲的`chunk`合并在一起难度非常大。
 > * 分配器面向的用户是**容器**——元素一样大的集合，如果用户直接使用分配器，就必须记住分配的大小。这是因为自主分配的内存不会带`cookie`，而容器的第一个目标参数都会是参数类型，只要`sizeof`一下就可以计算出来所申请的`size`。
-> * `embedded pointers`是成熟的工业级分配器都会使用的`Tips`。
+> * **`embedded pointers`是成熟的工业级分配器都会使用的`Tips`**。
 
 * [GNU2.9的std::alloc源码实现](../src/MemoryManagement/11std::alloc.cpp)
 
@@ -281,7 +281,7 @@ class vector{
 
 
 
- 
+
 
 
 

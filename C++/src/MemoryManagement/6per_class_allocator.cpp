@@ -20,16 +20,18 @@ using namespace std;
 */
 class Screen{
     public:
-        Screen(long x) : i(x){}
+        Screen(int x) : i(x){}
         ~Screen() {}
         int get() {return i;}
-
+		void print(){
+			cout<<"hello world!!"<<endl;
+		}
     private:
         Screen* next;
         static Screen* freeStore;
         static const int screenChunk;
     private:
-        long i;
+        int i;
 };
 class Screen_override
 {
@@ -140,10 +142,23 @@ void TEST_NO_COOKIE(void)
 int main(void)
 {
     
-    //cout << sizeof(int) << endl;
-    //cout << sizeof(Screen*) << endl;
+    cout << sizeof(int) << endl;
+    cout << sizeof(Screen*) << endl;
+    
+    cout << sizeof(Screen) << endl;
+    cout << sizeof(Screen_override) << endl;
+    
+    
     TEST_WITH_COOKIE();
 
     TEST_NO_COOKIE();
+    
+//    Screen *ps= new Screen(2);
+//    ps->print();
+//	delete ps;
+
+	Screen *ps=NULL;
+	ps->print(); 
+	 
     return 0;
 }

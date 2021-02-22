@@ -49,7 +49,6 @@ const int Airplane::BLOCK_SIZE = 512;
 
 //重载
 void* Airplane::operator new(size_t size) {
-
     if(size != sizeof(Airplane)) {  //继承发生就会有问题
         return ::operator new(size);
     }

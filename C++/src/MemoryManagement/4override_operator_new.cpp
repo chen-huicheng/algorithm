@@ -120,7 +120,7 @@ int main(void)
 //    }else {
 //        TEST_GLOBAL_OPERATOR_NEW();
 //    }
-	TEST_LOCAL_OPERATOR_NEW() ;
+//	TEST_LOCAL_OPERATOR_NEW() ;
 	
 	
     Foo *f=new Foo();

@@ -1,6 +1,6 @@
 #include <algorithm>
 #include <iostream>
-//#include <ext/pool_allocator.h>
+#include <ext/pool_allocator.h>
 
 
 using namespace std;
@@ -29,13 +29,13 @@ void cookie_test(Alloc alloc, size_t size) {
 int main(void)
 {
     //GNU 4.9
-    //cout << sizeof(__gnu_cxx::__pool_alloc(int)) << endl;
-    //cookie_test(__gnu_cxx::__pool_alloc<double>(), 1);
+    cout << sizeof(__gnu_cxx::__pool_alloc<int>) << endl;
+    cookie_test(__gnu_cxx::__pool_alloc<double>(), 1);
 
 
     //GNU2.9
-    cout << sizeof(std::allocator<int>) << endl;
-    cookie_test(std::allocator<double>(), 1);
+//    cout << sizeof(std::allocator<int>) << endl;
+//    cookie_test(std::allocator<double>(), 1);
 
     return 0;
 }
